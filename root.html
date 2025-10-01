@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HIGH SCHOOL- HOME / CONTACT / NEW DROP OCT</title>
+  <style>
+    /* Sólo blanco y negro: #000 y #fff */
+    :root {
+      --bg: #ffffff;
+      --fg: #000000;
+    }
+
+    /* Galería de imágenes */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .img-card {
+      overflow: hidden;
+      border: 2px solid var(--fg);
+      border-radius: 12px;
+      background: var(--bg);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    /* Efecto al pasar el cursor */
+    .img-card:hover {
+      transform: translateY(-6px) scale(1.03);
+    }
+
+    .img-card:hover img {
+      transform: scale(1.1);
+      filter: grayscale(100%) contrast(120%);
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      
+      background: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Layout */
+    .container {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 2px solid var(--fg);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    nav {
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    /* Botones del nav */
+    .nav-btn {
+      background: transparent;
+      color: var(--fg);
+      border: 2px solid var(--fg);
+      padding: 8px 14px;
+      border-radius:8px;
+      cursor: pointer;
+      font-weight:600;
+      text-transform:uppercase;
+      font-size:13px;
+      transition: background 180ms, color 180ms, transform 120ms;
+    }
+    .nav-btn:active { transform: translateY(1px); }
+    .nav-btn[aria-current="true"] {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    /* Main content */
+    main {
+      padding: 28px;
+    }
+
+    .sections {
+      max-width: 100%; /* ocupa todo el ancho */
+  margin: 0;       /* elimina márgenes */
+  padding: 0 16px; 
+    }
+
+    section {
+      display: none; /* se muestra solo la sección activa via JS */
+      padding: 22px;
+      border-radius: 8px;
+      box-shadow: none;
+    }
+    section:focus {
+  outline: 2px solid var(--fg); /* el recuadro se mantiene igual al enfocarse */
+}
+
+
+
+    section.active {
+      display: block;
+      animation: fadeIn 220ms ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Títulos */
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+    }
+    p { line-height:1.6; margin: 0 0 12px 0; }
+
+    /* Footer */
+    footer {
+      border-top: 2px solid var(--fg);
+      padding: 12px 22px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width:640px) {
+      header { flex-direction: column; align-items:stretch; gap:12px; }
+      nav { justify-content:center; flex-wrap:wrap; }
+    }
+
+    /* Accesibilidad */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Tarjeta NEW DROP */
+    .card {
+      border: 2px dashed var(--fg);
+      padding: 18px;
+      border-radius: 10px;
+    }
+
+    /* Contact form */
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      border: 1px solid var(--fg);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 14px;
+    }
+    form button {
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 2px solid var(--fg);
+      background: var(--fg);
+      color: var(--bg);
+      font-weight:700;
+      cursor: pointer;
+      text-transform:uppercase;
+    }
+    
+  </style>
+</head>
+<body>
+   <p style="font-family: Arial, sans-serif; font-size:18px; font-weight:700; color:#2b2b2b;">
+  </p>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="logo.png" alt="Mi logo" style="width: 80px; height:auto;">
+        <div>
+          <div style="font-size:14px">-HIGH CLASS SCHOOL-</div>
+          <div style="font-size:11px; opacity:0.8">Pagina Web</div>
+        </div>
+      </div>
+
+      <nav role="navigation" aria-label="Menú principal">
+        <button class="nav-btn" data-target="home" aria-current="true">Home</button>
+        <button class="nav-btn" data-target="new-drop">New Drop Oct</button>
+        <button class="nav-btn" data-target="contact">Contact</button>
+      </nav>
+    </header>
+
+    <main>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css" integrity="sha512-9A0Q06qY3H84W8uHcpwOmP283FzTjIqX7bXkG/f2iP9x9Yh/B+s7pL2v1/G5bJ10wA7dM08z6Y5tJd2Oq5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <div class="sections" id="sections">
+        <!-- HOME -->
+        <section id="home" class="active" aria-labelledby="home-title" tabindex="0">
+          <h1 id="home-title">Bienvenidos</h1>
+          <p>Nuestra marca redefine el streetwear desde la perspectiva del minimalismo. 
+            Diseños limpios, siluetas versátiles y colores neutros que se convierten en 
+            un lienzo de estilo urbano. Apostamos por la comodidad sin perder carácter: piezas atemporales, 
+            esenciales y con detalles sutiles que marcan la diferencia. Creemos en una moda que habla bajo,
+             pero deja huella; ropa que acompaña la vida en la ciudad con autenticidad, equilibrio y fuerza 
+             silenciosa.”</p>
+
+          <h2 style="margin: top 70px;;">HIGH CLASS SCHOOL</h2>
+          <div class="gallery">
+            <div class="img-card">
+              <img src="imagen1.jpeg" alt="Imagen 1">
+            </div>
+            <div class="img-card">
+              <img src="imagen2.jpeg" alt="Imagen 2">
+            </div>
+            <div class="img-card">
+              <img src="imagen3.jpg" alt="Imagen 3">
+            </div>
+            <div class="img-card">
+              <img src="imagen4.jpg" alt="Imagen 4">
+            </div>
+            <div class="img-card">
+              <img src="imagen5.jpeg" alt="Imagen 4">
+            </div>
+            <div class="img-card">
+              <img src="imagen7.jpeg" alt="Imagen 4">
+            </div>
+             <div class="img-card">
+              <img src="imagen8.jpeg" alt="Imagen 4">            
+          </div>
+          
+        </section>
+
+        <!-- NEW DROP OCT -->
+        <section id="new-drop" aria-labelledby="newdrop-title" tabindex="0">
+          <h1 id="newdrop-title">NEW DROP OCTOBER</h1>
+          <div class="card" style="margin-top:12px">
+            <strong>Detalles del drop</strong>
+            <p style="margin:10px 0 0 0">Edición limitada. Diseño minimalista de excelente calidad.</p>
+            <div style="margin-top:10px">
+              <h2 style="margin: top 70px;;">NEW COLLECTION</h2>
+          <div class="gallery">
+            <div class="img-card">
+              <img src="camisa1new.jpeg" alt="Imagen 1">
+            </div>
+            <div class="img-card">
+              <img src="camisa2new.jpeg" alt="Imagen 2">         
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" aria-labelledby="contact-title" tabindex="0">
+          <h1 id="contact-title">CONTACT</h1>
+          <p>Rellena el formulario para enviarnos un mensaje (simulación, sin backend).</p>
+
+          <form id="contact-form" onsubmit="return false;" aria-label="Formulario de contacto">
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+
+            <label for="email">Correo</label>
+            <input id="email" name="email" type="email" placeholder="tucorreoelectronico.com" required>
+
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="5" placeholder="Escribenos" required></textarea>
+
+            <button id="send-btn" type="submit">Enviar</button>
+            <p id="form-status" class="sr-only" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </main>
+ <footer style="display:flex; align-items:center; justify-content:space-between; padding:12px 22px; border-top:2px solid var(--fg); font-size:13px;">
+    <div class="footer-left" style="display:flex; gap:12px;">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" style="text-decoration:none;">
+          <img src="facebook.png" alt="Logo de Facebook" style="width: 20px; height: 20px;">
+        </a>
+                <a href="https://www.instagram.com/highclassbyjb" target="_blank" aria-label="Instagram" style="text-decoration:none;">
+          <img src="instagram.png" alt="Logo de Instagram" style="width: 20px; height: 20px;">
+        </a>
+    </div>
+
+    <div class="footer-center" style="flex-grow:1; text-align:center;">
+        © <span id="year"></span> JB HYPPE--Ing Joe Belduma. All rights reserved.
+    </div>
+
+    <div class="footer-right" style="display:flex; gap:14px;">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" style="text-decoration:none;">
+          <img src="facebook.png" alt="Logo de Facebook" style="width: 20px; height: 20px;">
+        </a>
+        <a href="https://www.instagram.com/joebelduma17/" target="_blank" aria-label="Instagram" style="text-decoration:none;">
+          <img src="instagram.png" alt="Logo de Instagram" style="width: 20px; height: 20px;">
+        </a>
+    </div>
+</footer>
+  </div>
+
+ <!-- Incluye esto antes de cerrar </body> -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+(function(){
+  // Inicializar EmailJS con tu Public Key
+  emailjs.init('RnRwP1wwLOrQ0c6co'); // tu Public Key
+
+  const navButtons = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('main .sections section');
+  const yearSpan = document.getElementById('year');
+  yearSpan.textContent = new Date().getFullYear();
+
+  function showSection(id) {
+    sections.forEach(sec => {
+      if (sec.id === id) {
+        sec.classList.add('active');
+        sec.setAttribute('aria-hidden', 'false');
+        sec.focus();
+      } else {
+        sec.classList.remove('active');
+        sec.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    navButtons.forEach(btn => {
+      btn.setAttribute('aria-current', btn.dataset.target === id ? 'true' : 'false');
+    });
+
+    try { history.replaceState(null, '', '#' + id); } catch(e) {}
+  }
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      showSection(btn.dataset.target);
+    });
+  });
+
+  window.addEventListener('load', () => {
+    const hash = (location.hash || '').replace('#','');
+    const valid = Array.from(sections).some(s => s.id === hash);
+    if (valid) showSection(hash);
+    else showSection('home');
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === '1') showSection('home');
+    if (e.key === '2') showSection('new-drop');
+    if (e.key === '3') showSection('contact');
+  });
+
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    const title = "Nuevo mensaje de contacto"; // Puedes personalizarlo
+
+    if (!name || !email || !message) {
+      status.textContent = 'Por favor completa todos los campos.';
+      status.classList.remove('sr-only');
+      return;
+    }
+
+    // Enviar correo con EmailJS
+    emailjs.send("joebelduma", "template_n7ffrrm", {
+    from_name: name,
+    from_email: email,
+    message: message,
+    title: title
+  })
+    .then(() => {
+      status.textContent = '✅ Tu mensaje ha sido enviado. Gracias, ' + name + '!';
+      status.classList.remove('sr-only');
+      form.reset();
+    })
+    .catch((err) => {
+      console.error("Error EmailJS:", err);
+      status.textContent = '❌ Error al enviar el mensaje. Intenta nuevamente.';
+      status.classList.remove('sr-only');
+    });
+  });
+})();
+</script>
+
+
+</body>
+</html>
